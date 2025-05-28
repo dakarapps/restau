@@ -1,0 +1,454 @@
+/* Variables */
+:root {
+    --primary-gradient: linear-gradient(135deg, #1a1c20 0%, #2c3e50 100%);
+    --secondary-gradient: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    --accent-gradient: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    --title-gradient: linear-gradient(45deg, #3498db, #2ecc71, #f1c40f, #e74c3c);
+    --title-gradient-2: linear-gradient(45deg, #8e44ad, #3498db, #2ecc71);
+    --header-gradient: linear-gradient(135deg, #2c3e50 0%, #1a1c20 50%, #2c3e50 100%);
+    --restaurant-name-gradient: linear-gradient(45deg, #f1c40f, #e74c3c, #3498db, #2ecc71);
+    --card-gradient: linear-gradient(135deg, rgba(44, 62, 80, 0.9) 0%, rgba(52, 73, 94, 0.9) 100%);
+    --hover-gradient: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    --text-color: #f8f9fa;
+    --transition-speed: 0.3s;
+}
+
+body {
+    background: var(--primary-gradient);
+    color: var(--text-color);
+    background-image: url('../images/background.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+/* Splash Screen */
+.splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--primary-gradient);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity var(--transition-speed);
+}
+
+.splash-content {
+    text-align: center;
+    color: white;
+    animation: fadeInUp 1s ease-out;
+}
+
+.logo-animation {
+    width: 150px;
+    height: auto;
+    animation: pulse 2s infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Header */
+.header {
+    background: var(--header-gradient);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(52, 152, 219, 0.1), rgba(46, 204, 113, 0.1));
+    z-index: 0;
+}
+
+.navbar {
+    background: transparent !important;
+    position: relative;
+    z-index: 1;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: 700;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    background: var(--restaurant-name-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 300% 300%;
+    transition: all var(--transition-speed);
+}
+
+.navbar-brand:hover {
+    transform: translateY(-2px) scale(1.05);
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+.navbar-brand img {
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.3));
+    transition: all var(--transition-speed);
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.5));
+}
+
+.nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: all var(--transition-speed);
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--restaurant-name-gradient);
+    transition: width var(--transition-speed);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: #3498db !important;
+    transform: translateY(-2px);
+}
+
+/* Menu Sections */
+.menu-section {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s ease-out forwards;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(26, 28, 32, 0.8);
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.section-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1rem;
+    position: relative;
+    background: var(--title-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 300% 300%;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 4px;
+    background: var(--title-gradient-2);
+    border-radius: 4px;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 300% 300%;
+}
+
+/* Menu Items */
+.menu-item {
+    margin-bottom: 2rem;
+}
+
+.menu-item .card {
+    background: var(--card-gradient);
+    border: none;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: all var(--transition-speed);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.menu-item .card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.menu-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform var(--transition-speed);
+}
+
+.menu-item .card:hover img {
+    transform: scale(1.1);
+}
+
+.menu-item .card-body {
+    padding: 1.5rem;
+}
+
+.menu-item h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--title-gradient-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 300% 300%;
+}
+
+.menu-item .description {
+    color: #ecf0f1;
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.menu-item .price {
+    color: #e74c3c;
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.menu-item .price small {
+    color: #95a5a6;
+    font-size: 1rem;
+}
+
+.menu-item .icons {
+    margin-top: 1rem;
+}
+
+.menu-item .icons i {
+    color: #3498db;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+    transition: transform var(--transition-speed);
+}
+
+.menu-item .icons i:hover {
+    transform: scale(1.3);
+    color: #2980b9;
+}
+
+.menu-item .allergens {
+    color: #95a5a6;
+    font-size: 0.9rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Filters */
+.filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(26, 28, 32, 0.9);
+    border-radius: 15px;
+    margin: 2rem 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.filter-buttons .btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    transition: all var(--transition-speed);
+    backdrop-filter: blur(5px);
+    font-weight: 500;
+}
+
+.filter-buttons .btn:hover {
+    transform: translateY(-3px);
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.filter-buttons .btn.active {
+    background: var(--secondary-gradient);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Footer */
+.footer {
+    background: rgba(26, 28, 32, 0.95);
+    backdrop-filter: blur(10px);
+    color: white;
+    padding: 4rem 0;
+    margin-top: 4rem;
+}
+
+.footer h5 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    background: var(--title-gradient-2);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientFlow 8s ease infinite;
+    background-size: 300% 300%;
+    margin-bottom: 1.5rem;
+}
+
+.footer p {
+    color: #ecf0f1;
+    line-height: 1.8;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin-right: 1.5rem;
+    transition: all var(--transition-speed);
+}
+
+.social-links a:hover {
+    color: #3498db;
+    transform: translateY(-5px);
+}
+
+/* Language Toggle */
+#language-toggle {
+    background: var(--accent-gradient);
+    border: none;
+    color: white;
+    transition: all var(--transition-speed);
+}
+
+#language-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Parallax Effect */
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Loading Animation */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.spinner-border {
+    animation: spin 1s linear infinite;
+    color: white;
+}
+
+/* Gradient Animation */
+@keyframes gradientFlow {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .menu-section {
+        padding: 1rem;
+    }
+
+    .section-title {
+        font-size: 2.2rem;
+        letter-spacing: 2px;
+    }
+
+    .filter-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .filter-buttons .btn {
+        width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .menu-item .card {
+        margin-bottom: 1.5rem;
+    }
+
+    .menu-item h3 {
+        font-size: 1.4rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.5rem;
+    }
+
+    .footer h5 {
+        font-size: 1.2rem;
+    }
+} 

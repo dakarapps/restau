@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Le POWER - Notre Menu</title>
+    <!-- Bootstrap 5 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome pour les icônes -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="splash-screen">
+      <div class="splash-content">
+        <img
+          src="images/logo.png"
+          alt="Logo Restaurant"
+          class="logo-animation"
+        />
+        <div class="spinner-border text-light" role="status">
+          <span class="visually-hidden">Chargement...</span>
+        </div>
+        <h2 class="mt-4">Bienvenue à le POWER</h2>
+      </div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="#">
+            <img src="images/logo.png" alt="Logo Restaurant" height="40" />
+            Le POWER
+          </a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="#"
+                  ><i class="fas fa-home"></i> Accueil</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#contact"
+                  ><i class="fas fa-envelope"></i> Contact</a
+                >
+              </li>
+              <li class="nav-item">
+                <button class="btn btn-outline-light" id="language-toggle">
+                  FR
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Filtres -->
+    <section class="filters py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <div class="filter-buttons">
+              <button class="btn btn-outline-light m-1" data-filter="all">
+                Tout
+              </button>
+              <button
+                class="btn btn-outline-light m-1"
+                data-filter="vegetarian"
+              >
+                <i class="fas fa-leaf"></i> Végétarien
+              </button>
+              <button class="btn btn-outline-light m-1" data-filter="spicy">
+                <i class="fas fa-pepper-hot"></i> Épicé
+              </button>
+              <button
+                class="btn btn-outline-light m-1"
+                data-filter="gluten-free"
+              >
+                <i class="fas fa-bread-slice"></i> Sans Gluten
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Menu Sections -->
+    <main class="container py-5">
+      <!-- Cocktails -->
+      <section class="menu-section mb-5" id="cocktails">
+        <h2 class="section-title">Cocktails</h2>
+        <div class="row">
+          <!-- Les cocktails seront ajoutés dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Sandwichs -->
+      <section class="menu-section mb-5" id="sandwichs">
+        <h2 class="section-title">Sandwichs</h2>
+        <div class="row">
+          <!-- Les sandwichs seront ajoutés dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Tacos -->
+      <section class="menu-section mb-5" id="tacos">
+        <h2 class="section-title">Tacos</h2>
+        <div class="row">
+          <!-- Les tacos seront ajoutés dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Pizzas -->
+      <section class="menu-section mb-5" id="pizzas">
+        <h2 class="section-title">Pizzas</h2>
+        <div class="row">
+          <!-- Les pizzas seront ajoutées dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Crêpes -->
+      <section class="menu-section mb-5" id="crepes">
+        <h2 class="section-title">Crêpes</h2>
+        <div class="row">
+          <!-- Les crêpes seront ajoutées dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Spécialités -->
+      <section class="menu-section mb-5" id="specialites">
+        <h2 class="section-title">Spécialités</h2>
+        <div class="row">
+          <!-- Les spécialités seront ajoutées dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Accompagnements -->
+      <section class="menu-section mb-5" id="accompagnements">
+        <h2 class="section-title">Accompagnements</h2>
+        <div class="row">
+          <!-- Les accompagnements seront ajoutés dynamiquement via JavaScript -->
+        </div>
+      </section>
+
+      <!-- Chicha -->
+      <section class="menu-section mb-5" id="chicha">
+        <h2 class="section-title">Chicha</h2>
+        <div class="row">
+          <!-- La chicha sera ajoutée dynamiquement via JavaScript -->
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Horaires d'ouverture</h5>
+            <p>
+              Mardi - Vendredi: 11h30 - 15h30, 18h00 - 01h00<br />
+              Samedi - Dimanche: 12h00 - 03h00
+            </p>
+          </div>
+          <div class="col-md-4">
+            <h5>Contact</h5>
+            <p>
+              <i class="fas fa-map-marker-alt me-2"></i> En face arrêt BRT
+              liberté 6, Dakar Sénégal<br />
+              <i class="fas fa-phone me-2"></i>
+              <a href="tel:+221786961212" class="text-light">+221 786961212</a
+              ><br />
+              <i class="fas fa-envelope me-2"></i>
+              <a href="mailto:power@gmail.com" class="text-light"
+                >power@gmail.com</a
+              >
+            </p>
+            <a
+              href="https://maps.google.com"
+              target="_blank"
+              class="btn btn-outline-light mt-2"
+            >
+              <i class="fas fa-map-marker-alt"></i> Voir sur Google Maps
+            </a>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <div class="social-links">
+              <a href="#" class="me-3"><i class="fab fa-facebook fa-2x"></i></a>
+              <a href="#" class="me-3"
+                ><i class="fab fa-instagram fa-2x"></i
+              ></a>
+              <a href="#" class="me-3"><i class="fab fa-twitter fa-2x"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/menu-data.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
