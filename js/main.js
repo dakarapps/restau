@@ -149,7 +149,7 @@ window.addEventListener("scroll", () => {
 // Fonction pour créer un élément de menu
 function createMenuItem(item) {
     return `
-        <div class="col-md-4 mb-4">
+        <div class="col-12 col-md-6 col-lg-4">
             <div class="card h-100">
                 ${item.image ? `<img src="${item.image}" class="card-img-top" alt="${item.name}">` : ''}
                 <div class="card-body">
@@ -196,6 +196,16 @@ function getTagIcon(tag) {
     return icons[tag.toLowerCase()] || 'fa-tag';
 }
 
+// Fonction pour obtenir le nombre d'éléments par slide selon la taille de l'écran
+function getItemsPerSlide() {
+    if (window.innerWidth >= 1200) {
+        return 3; // Desktop: 3 items
+    } else if (window.innerWidth >= 768) {
+        return 2; // Tablet: 2 items
+    }
+    return 1; // Mobile: 1 item
+}
+
 // Fonction pour initialiser les carousels
 function initializeCarousels() {
     const sections = ['cocktails', 'sandwichs', 'tacos', 'pizzas', 'crepes', 'specialites', 'accompagnements', 'chicha'];
@@ -204,8 +214,8 @@ function initializeCarousels() {
         const carousel = document.querySelector(`#${section}Carousel .carousel-inner`);
         const items = menuData[section] || [];
         
-        // Diviser les éléments en groupes de 3 pour chaque slide
-        const itemsPerSlide = 3;
+        // Diviser les éléments en groupes selon la taille de l'écran
+        const itemsPerSlide = getItemsPerSlide();
         const slides = [];
         
         for (let i = 0; i < items.length; i += itemsPerSlide) {
@@ -216,13 +226,49 @@ function initializeCarousels() {
         // Créer les slides
         carousel.innerHTML = slides.map((slideItems, index) => `
             <div class="carousel-item ${index === 0 ? 'active' : ''}">
-                <div class="row">
+                <div class="row g-0 justify-content-center">
                     ${slideItems.map(item => createMenuItem(item)).join('')}
                 </div>
             </div>
         `).join('');
+
+        // Initialiser le carousel Bootstrap avec des options personnalisées
+        new bootstrap.Carousel(document.querySelector(`#${section}Carousel`), {
+            interval: false, // Désactive le défilement automatique
+            wrap: true,
+            touch: true,
+            keyboard: true,
+            pause: 'hover',
+            ride: false
+        });
+
+        // Ajouter des gestionnaires d'événements personnalisés pour un contrôle plus précis
+        const carouselElement = document.querySelector(`#${section}Carousel`);
+        const prevButton = carouselElement.querySelector('.carousel-control-prev');
+        const nextButton = carouselElement.querySelector('.carousel-control-next');
+
+        prevButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const carousel = bootstrap.Carousel.getInstance(carouselElement);
+            carousel.prev();
+        });
+
+        nextButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            const carousel = bootstrap.Carousel.getInstance(carouselElement);
+            carousel.next();
+        });
     });
 }
+
+// Gestion du redimensionnement de la fenêtre avec debounce
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        initializeCarousels();
+    }, 250);
+});
 
 // Initialisation au chargement de la page
 document.addEventListener('DOMContentLoaded', () => {
